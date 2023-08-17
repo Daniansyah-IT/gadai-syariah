@@ -1,3 +1,16 @@
+<?php
+require_once 'functions.php';
+
+// Establish database connection
+$connection = connect_to_database();
+
+// Now you can use the $connection variable to perform database operations
+// For example: mysqli_query($connection, "SELECT * FROM your_table");
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
