@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.php">
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="img/logo/logo1.png" alt="Company Logo" width="100" height="auto">
+        <a class="navbar-brand " href="#">
+            <img src="img/logo/logo1.png" alt="Company Logo" class="center-image" width="100" height="auto">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

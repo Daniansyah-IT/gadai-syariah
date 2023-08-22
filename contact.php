@@ -24,8 +24,14 @@ Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami. Kami akan den
                     <strong>PT.Gadai Syariah Berkat Bersama</strong><br>
                     Teluk Dalam 185<br>
                     Tenggarong Seerang-Kutai Kartanegara, 75572<br>
-                    <abbr title="Phone"><i class="bi bi-phone"></i></abbr> (+62) 813-0000-0000<br>
+                    <abbr title="Phone"><i class="bi bi-phone"></i></abbr> (+62) 852-4830-8889<br>
                     <abbr title="Email"><i class="bi bi-envelope"></i></abbr> info@gsmail.com
+                    <h3 class="mt-3">Contact All Branch</h3>
+                    <div  class="btn btn-success">
+                    <a href="https://linktr.ee/Gadaisyariah.id/" class="btn text-white">Link</a>
+
+
+                    </div>
                 </address>
             </div>
             <div class="col-md-6">

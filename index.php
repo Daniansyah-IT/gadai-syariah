@@ -1,15 +1,3 @@
-<?php
-require_once 'functions.php';
-
-// Establish database connection
-$connection = connect_to_database();
-
-// Now you can use the $connection variable to perform database operations
-// For example: mysqli_query($connection, "SELECT * FROM your_table");
-?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,27 +6,65 @@ $connection = connect_to_database();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     
 </head>
+
 <body>
 
 <!-- Navbar -->
 <!-- Navbar (same as index.php) -->
-<?php include 'navbar.php'; ?>
+<nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo/logo1.png" alt="Company Logo" width="100" height="auto">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ourteam.php">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.php">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact Us</a>
+                </li>
+            </ul>
+            <!-- Search input on the right (responsive) -->
+            <form class="d-lg-flex">
+                <input class="form-control me-lg-2 border-success" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        </div>
+    </div>
+</nav>
 
 <!-- carousel -->
 <div class="mt-5">
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/carousel/co6.png" class="d-block w-100" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-                <img src="img/carousel/co6.png" class="d-block w-100" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="img/carousel/co6.png" class="d-block w-100" alt="Slide 3">
-            </div>
+            
+                <?php
+                    $images = scandir("img/carousel/"); // List all files in "images" directory
+
+                    foreach ($images as $image) {
+                        if ($image !== "." && $image !== "..") {
+                            echo "<div class='carousel-item active'>";
+                            echo "<img src='img/carousel/$image' class='d-block w-100'  alt='$image'>";
+                            echo "</div>";
+                        }
+                    }
+                ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,19 +76,65 @@ $connection = connect_to_database();
         </button>
     </div>
 </div>
+<section class="py-5">
+    <div class="container">
+        <h1 class="center-text">PROMOTIONS</h1>
+        <div class="row">
+            <?php
+            // Database connection parameters
+            $db_host = 'localhost';
+            $db_user = 'root';
+            $db_pass = '';
+            $db_name = 'gadai_syariah';
+
+            $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+
+            if (!$connection) {
+                die("Database connection failed: " . mysqli_connect_error());
+            }
+
+            // Fetch promotions from database
+            $query = "SELECT title, description, image, start_date, end_date FROM promo";
+            $result = mysqli_query($connection, $query);
+
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="col-md-4 mb-4">';
+                    echo '<div class="card">';
+                    echo '<img src="' . $row['image'] . '" class="card-img-top" alt="' . $row['title'] . '">';
+                    echo '<div class="card-body">';
+                    echo '<h5 class="card-title">' . $row['title'] . '</h5>';
+                    echo '<p class="card-text">' . $row['description'] . '</p>';
+                    echo '<p class="card-text"><small class="text-muted">Start Date: ' . $row['start_date'] . ' - End Date: ' . $row['end_date'] . '</small></p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "Error: " . mysqli_error($connection);
+            }
+
+            mysqli_close($connection);
+            ?>
+        </div>
+    </div>
+    
+</section>
+
+
 
 
 <!-- About Section -->
 <section class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <h2>About Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat tincidunt arcu, id pharetra ante. Sed fringilla tortor ac odio auctor scelerisque.</p>
+            <div class="col-lg-8">
+                <h2 class="center-text">About Us</h2>
+                <p>PT.Gadai Syariah Berkat Bersama merupakan perusahaan yang bergerak di bidang Keuangan dengan Jasa gadai yang menerima Barang-barang Elektronik yang bernilai jual dan Kendaraan bermotor sebagai fokus produknya . Mengingat banyak perusahaan besar sejenis hanya berfokuskepada penerimaan Perhiasan /Emas, belum lagi banyak perusahaan yang melakukan praktik ketidak adilan melalui praktik riba (usury) dan ketidak pastian (gharar), menjawab keresahan itu maka PT.Gadai Syariah Berkat Bersama hadir untuk membantu Masyarakat untuk mendapatkan Pinjaman, yang Cepat, Aman dan Amanah . Tugas pokok dari PT.Gadai Syariah Berkat Bersama adalah memberikan pinjaman kepadamasyarakat yang membutuhkan.Pemberian pinjaman ini tidak terbatas untuk kalangan atau kelompok masyarakat tertentu, namun di Indonesia pemanfaat lembaga keuangan ini masih didominasi oleh kalangan yang mempunyai Perhiasan / Emas dan masih sedikit menjangkau kalangan yang hanya mempunyai Barang Elektronik dan Kendaraan dengan Syarat-syarat yang memudahkan . Dalam upaya mengubah persepsi masyarakat, salah satu cara yang digunakan PT.Gadai Syariah Berkat Bersama adalah dengan menciptakan motto Fokus Kepada Solusi Bukan Kepada Masalah .</p>
                 <a href="about.php" class="btn btn-primary">Learn More</a>
             </div>
-            <div class="col-lg-6">
-                <img src="img/carousel/bd.png" alt="About Us" class="img-fluid rounded">
+            <div class="col-lg-4">
+                <img src="img/about/6.png" alt="About Us" class="img-fluid rounded">
             </div>
         </div>
     </div>
@@ -72,13 +144,13 @@ $connection = connect_to_database();
 <section class="bg-light py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <h2>Contact Us</h2>
+            <div class="col-lg-8">
+                <h2 class="center-text">News</h2>
                 <p>If you have any questions or inquiries, feel free to get in touch with us.</p>
                 <a href="contact.php" class="btn btn-primary">Contact Us</a>
             </div>
-            <div class="col-lg-6">
-                <img src="img/carousel/co1.png" alt="About Us" class="img-fluid rounded">
+            <div class="col-lg-4">
+                <img src="img/about/6.png" alt="About Us" class="img-fluid rounded">
             </div>
         </div>
     </div>

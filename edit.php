@@ -14,7 +14,7 @@ if (isset($_GET['image'])) {
         $oldImage = $_POST['oldImage'];
         move_uploaded_file($_FILES['newImage']['tmp_name'], "img/carousel/$newImage");
         unlink("img/carousel/$oldImage"); // Delete old image
-        header("Location: index.php");
+        header("Location: content.php");
     }
 }
 ?>

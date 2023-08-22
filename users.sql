@@ -47,3 +47,14 @@ $username = $_SESSION['username'];
 ?>
 
 
+<div class="card">
+                    <?php
+                    $images = scandir("img/promo/");
+                    foreach ($images as $image) {
+                        if ($image !== "." && $image !== "..") {
+                            echo "<img src='img/promo/$image' alt='$image'>";
+                        }
+                    }
+                    
+                    ?>
+                </div>
