@@ -215,10 +215,10 @@ $username = $_SESSION['username'];
                 </nav>
                 <div class="row">
                     <div class="col-12 col-xl-12 mb-4 mb-lg-0">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm ">
                       <div class="container">
                           <a class="navbar-brand" href="#">
-                              <img src="img/logo/logo1.png" alt="Company Logo" width="100" height="auto">
+                              <img src="img/logo/logo3.png" alt="Company Logo" width="100" height="auto">
                           </a>
                           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                               <span class="navbar-toggler-icon"></span>
@@ -226,25 +226,25 @@ $username = $_SESSION['username'];
                           <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav mx-auto">
                                   <li class="nav-item active">
-                                      <a class="nav-link" href="index.php">Home</a>
+                                      <a class="nav-link text-white" href="index.php">Home</a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="about.php">About Us</a>
+                                      <a class="nav-link text-white" href="about.php">About Us</a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="ourteam.php">Our Team</a>
+                                      <a class="nav-link text-white" href="ourteam.php">Our Team</a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="services.php">Services</a>
+                                      <a class="nav-link text-white" href="services.php">Services</a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="contact.php">Contact Us</a>
+                                      <a class="nav-link text-white" href="contact.php">Contact Us</a>
                                   </li>
                               </ul>
                               <!-- Search input on the right (responsive) -->
                               <form class="d-lg-flex">
                                   <input class="form-control me-lg-2 border-success" type="search" placeholder="Search" aria-label="Search">
-                              <button class="btn btn-outline-success" type="submit">Search</button>
+                              <button class="btn btn-outline-light text-white" type="submit">Search</button>
                           </form>
                           </div>
                       </div>
@@ -253,18 +253,7 @@ $username = $_SESSION['username'];
                     </div>
                 </div>
                 <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
-                    <ul class="nav m-0">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Contact</a>
-                        </li>
-                      </ul>
+                    <span>Copyright © 2023-2024 <a href="#">Daniansyah</a></span>
                 </footer>
             </main>
         </div>

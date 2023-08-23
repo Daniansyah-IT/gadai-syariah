@@ -220,7 +220,7 @@ $username = $_SESSION['username'];
                                 require 'connect.php'; // Include the database connection
 
                                 $query = "SELECT * FROM users";
-                                $result = mysqli_query($connection, $query);
+                                $result = mysqli_query($conn, $query);
 
                                 if ($result) {
                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -231,28 +231,17 @@ $username = $_SESSION['username'];
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "Error: " . mysqli_error($connection);
+                                    echo "Error: " . mysqli_error($conn);
                                 }
 
-                                mysqli_close($connection);
+                                mysqli_close($conn);
                                 ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
-                    <ul class="nav m-0">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Contact</a>
-                        </li>
-                      </ul>
+                    <span>Copyright © 2023-2024 <a href="#">Daniansyah</a></span>
                 </footer>
             </main>
         </div>

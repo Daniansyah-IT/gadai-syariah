@@ -1,4 +1,5 @@
 <?php
+require 'connect.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -7,21 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Database configuration
-    $dbHost = 'localhost';
-    $dbUsername = 'root';
-    $dbPassword = '';
-    $dbName = 'gadai_syariah';
-
-    // Create a database connection
-    $mysqli = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
-    }
 
     // Insert user data into the database
     $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-    $stmt = $mysqli->prepare($sql);
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $username, $hashedPassword, $role);
 
     if ($stmt->execute()) {
@@ -32,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->close();
-    $mysqli->close();
+    $conn->close();
 }
 ?>
 <?php
@@ -263,18 +253,7 @@ $username = $_SESSION['username'];
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
                 <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
-                    <ul class="nav m-0">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Contact</a>
-                        </li>
-                      </ul>
+                    <span>Copyright © 2023-2024 <a href="#">Daniansyah</a></span>
                 </footer>
             </main>
         </div>

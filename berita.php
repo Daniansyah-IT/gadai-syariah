@@ -1,4 +1,5 @@
 <?php
+require 'connect.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -208,38 +209,73 @@ $username = $_SESSION['username'];
                 <div class="container mt-5">
                 <h1>Buat Berita Baru</h1>
 
-                <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="title" name="title" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="content" class="form-label">Tuliskan Berita</label>
-                        <textarea class="form-control" id="content" name="content" rows="12" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Upload Gambar</label>
-                        <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Create Post</button>
+                <h1>Form Berita</h1>
+                <form id="paragraphForm" action="upload_news.php" method="post" enctype="multipart/form-data">
+                  <div class="mb-3">
+                    <label for="title" class="form-label">Judul Berita:</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="content" class="form-label">Isi Berita:<i class="text-secondary">  minimal 50 kata ya guys...!!!</i></label>
+                    <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                    <p id="validationMessage" class="text-danger"></p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="image" class="form-label">Gambar:</label>
+                    <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Tambah Berita</button>
                 </form>
-</div>
                 </div>
+                
+                
+                
                 <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
-                    <ul class="nav m-0">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Contact</a>
-                        </li>
-                      </ul>
+                    <span>Copyright © 2023-2024 <a href="#">Daniansyah</a></span>
                 </footer>
             </main>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+            <div class="container mt-5">
+    <h1>News Management</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+
+
+        $sql = "SELECT id, title, content, image FROM news";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<tr>';
+                echo '<td>' . $row["id"] . '</td>';
+                echo '<td>' . $row["title"] . '</td>';
+                echo '<td>' . $row["content"] . '</td>';
+                echo '<td><img src="img/news/' . $row["image"] . '" class="img-thumbnail" alt="' . $row["title"] . '"></td>';
+                echo '<td>';
+                echo '<a href="edit_news.php?id=' . $row["id"] . '" class="btn btn-primary btn-sm">Edit</a> ';
+                echo '<a href="delete_news.php?id=' . $row["id"] . '" class="btn btn-danger btn-sm">Delete</a>';
+                echo '</td>';
+                echo '</tr>';
+            }
+        } else {
+            echo '<tr><td colspan="5">No news found.</td></tr>';
+        }
+
+        $conn->close();
+        ?>
+      </tbody>
+    </table>
+  </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -248,15 +284,55 @@ $username = $_SESSION['username'];
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
-        new Chartist.Line('#traffic-chart', {
-            labels: ['January', 'Februrary', 'March', 'April', 'May', 'June'],
-            series: [
-                [23000, 25000, 19000, 34000, 56000, 64000]
-            ]
-            }, {
-            low: 0,
-            showArea: true
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('paragraphForm');
+        const paragraphInput = document.getElementById('content');
+        const validationMessage = document.getElementById('validationMessage');
+
+        form.addEventListener('submit', function (event) {
+          const words = paragraphInput.value.trim().split(/\s+/);
+          if (words.length < 50) {
+            event.preventDefault();
+            validationMessage.textContent = 'Isi konten minimal 50 kata.';
+          } else {
+            validationMessage.textContent = 'Wah kata kata kamu bagus, kembangkan lagi ya!!!';
+          }
         });
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('paragraphForm');
+        const paragraphInput = document.getElementById('content');
+        const validationMessage = document.getElementById('validationMessage');
+
+        form.addEventListener('submit', function (event) {
+          const words = paragraphInput.value.trim().split(/\s+/);
+          if (words.length > 55,) {
+            event.preventDefault();
+            validationMessage.textContent = 'Isi konten minimal 50 kata.';
+          } else {
+            validationMessage.textContent = 'Wah kata kata kamu bagus, kembangkan lagi ya!!!';
+          }
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('paragraphForm');
+        const paragraphInput = document.getElementById('title');
+        const validationMessage = document.getElementById('validationMessage');
+
+        form.addEventListener('submit', function (event) {
+          const words = paragraphInput.value.trim().split(/\s+/);
+          if (words.length > 6) {
+            event.preventDefault();
+            validationMessage.textContent = 'Isi konten Maksimal 3 kata.';
+          } else {
+            validationMessage.textContent = '';
+          }
+        });
+      });
     </script>
     
 

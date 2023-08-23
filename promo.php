@@ -1,4 +1,5 @@
 <?php
+require 'connect.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -245,21 +246,10 @@ $username = $_SESSION['username'];
         </thead>
         <tbody>
             <?php
-            // Database connection parameters
-            $db_host = 'localhost';
-            $db_user = 'root';
-            $db_pass = '';
-            $db_name = 'gadai_syariah';
-
-            $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-            if (!$connection) {
-                die("Database connection failed: " . mysqli_connect_error());
-            }
 
             // Fetch promotions from database
             $query = "SELECT id, title, description, image, start_date, end_date FROM promo";
-            $result = mysqli_query($connection, $query);
+            $result = mysqli_query($conn, $query);
 
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -273,28 +263,17 @@ $username = $_SESSION['username'];
                     echo "</tr>";
                 }
             } else {
-                echo "Error: " . mysqli_error($connection);
+                echo "Error: " . mysqli_error($conn);
             }
 
-            mysqli_close($connection);
+            mysqli_close($conn);
             ?>
         </tbody>
     </table>
 </div>
 </div>
-                <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2019-2020 <a href="https://themesberg.com">Themesberg</a></span>
-                    <ul class="nav m-0">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Contact</a>
-                        </li>
-                      </ul>
+              <footer class="pt-5 d-flex justify-content-between">
+                    <span>Copyright © 2023-2024 <a href="#">Daniansyah</a></span>
                 </footer>
             </main>
         </div>

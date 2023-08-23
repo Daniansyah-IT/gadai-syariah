@@ -213,9 +213,9 @@ $username = $_SESSION['username'];
 
                     foreach ($images as $image) {
                         if ($image !== "." && $image !== "..") {
-                            echo "<div class='col-md-4'>";
-                            echo "<img src='img/carousel/$image' width='250' alt='$image'>"; 
-                            echo "<br><a class='btn btn-warning me-3 mt-2' href='edit.php?image=$image'>Edit</a>";
+                            echo "<div>";
+                            echo "<img src='img/carousel/$image' class='col-md-4' width='250' alt='$image'>"; 
+                            echo "<td><a class='btn btn-warning me-3 mt-2' href='edit.php?image=$image'>Edit</a>";
                             echo "<a class='btn btn-danger mt-2' href='delete.php?image=$image'>Delete</a>";
                             echo "</div>";
                         }

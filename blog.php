@@ -15,20 +15,7 @@
 
     <?php
     // Sample blog post data (you would fetch this from a database)
-    $blogPosts = [
-        [
-            'title' => 'Post Title 1',
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'author' => 'John Doe',
-            'date' => '2023-08-17'
-        ],
-        [
-            'title' => 'Post Title 2',
-            'content' => 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            'author' => 'Jane Smith',
-            'date' => '2023-08-18'
-        ]
-    ];
+
 
     // Loop through blog posts and display them
     foreach ($blogPosts as $post) {

@@ -1,3 +1,7 @@
+<?php
+        // Load news from database and generate table rows
+        require 'connect.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,18 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5GYXBXFcBakmqjN-nLrDhARSEr1J6Bc"></script>
     
 </head>
 
 <body>
 
 <!-- Navbar -->
-<!-- Navbar (same as index.php) -->
-<nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-success shadow-sm ">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="img/logo/logo1.png" alt="Company Logo" width="100" height="auto">
+            <img src="img/logo/logo3.png" alt="Company Logo" width="100" height="auto">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,25 +28,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link text-white" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.php">About Us</a>
+                    <a class="nav-link text-white" href="about.php">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ourteam.php">Our Team</a>
+                    <a class="nav-link text-white" href="ourteam.php">Our Team</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services.php">Services</a>
+                    <a class="nav-link text-white" href="services.php">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact Us</a>
+                    <a class="nav-link text-white" href="contact.php">Contact Us</a>
                 </li>
             </ul>
             <!-- Search input on the right (responsive) -->
             <form class="d-lg-flex">
                 <input class="form-control me-lg-2 border-success" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-light text-white" type="submit">Search</button>
         </form>
         </div>
     </div>
@@ -81,21 +84,11 @@
         <h1 class="center-text">PROMOTIONS</h1>
         <div class="row">
             <?php
-            // Database connection parameters
-            $db_host = 'localhost';
-            $db_user = 'root';
-            $db_pass = '';
-            $db_name = 'gadai_syariah';
 
-            $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-            if (!$connection) {
-                die("Database connection failed: " . mysqli_connect_error());
-            }
 
             // Fetch promotions from database
-            $query = "SELECT title, description, image, start_date, end_date FROM promo";
-            $result = mysqli_query($connection, $query);
+            $sql = "SELECT title, description, image, start_date, end_date FROM promo  ORDER BY id DESC LIMIT 3";
+            $result = $conn->query($sql);
 
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -114,16 +107,11 @@
                 echo "Error: " . mysqli_error($connection);
             }
 
-            mysqli_close($connection);
             ?>
         </div>
     </div>
     
 </section>
-
-
-
-
 <!-- About Section -->
 <section class="py-5">
     <div class="container">
@@ -144,21 +132,40 @@
 <section class="bg-light py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <h2 class="center-text">News</h2>
-                <p>If you have any questions or inquiries, feel free to get in touch with us.</p>
-                <a href="contact.php" class="btn btn-primary">Contact Us</a>
-            </div>
-            <div class="col-lg-4">
-                <img src="img/about/6.png" alt="About Us" class="img-fluid rounded">
+                <?php
+                $sql = "SELECT id, title, content, image FROM news ORDER BY id DESC LIMIT 3";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="col">';
+                        echo '<div class="card">';
+                        echo '<img src="img/news/' . $row["image"] . '" class="card-img-top" alt="' . $row["title"] . '">';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">' . $row["title"] . '</h5>';
+                        echo '<p class="card-text">' . $row["content"] . '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>No news found.</p>';
+                }
+
+                $conn->close();
+                ?>
             </div>
         </div>
     </div>
 </section>
+<?php include 'branchmaps.php'; ?>
 
-<!-- Footer -->
 <!-- Footer (same as index.php) -->
 <?php include 'footer.php'; ?>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5GYXBXFcBakmqjN-nLrDhARSEr1J6Bc&callback=initMap"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
