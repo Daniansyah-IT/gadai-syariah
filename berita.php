@@ -18,7 +18,7 @@ $username = $_SESSION['username'];
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Sidebars · Bootstrap v5.0</title>
+    <title>Berita</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -163,8 +163,6 @@ $username = $_SESSION['username'];
                 <h1 class="h2">News</h1>
                 <div class="container mt-5">
                 <h1>Buat Berita Baru</h1>
-
-                <h1>Form Berita</h1>
                 <form id="paragraphForm" action="upload_news.php" method="post" enctype="multipart/form-data">
                   <div class="mb-3">
                     <label for="title" class="form-label">Judul Berita:</label>
@@ -182,12 +180,6 @@ $username = $_SESSION['username'];
                   <button type="submit" class="btn btn-primary">Tambah Berita</button>
                 </form>
                 </div>
-                
-                
-                
-                <footer class="pt-5 d-flex justify-content-between">
-                    <span>Copyright © 2023-2024 <a href="#">Daniansyah</a></span>
-                </footer>
             </main>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
             <div class="container mt-5">
@@ -233,6 +225,7 @@ $username = $_SESSION['username'];
   </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>

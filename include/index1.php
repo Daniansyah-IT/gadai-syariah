@@ -1,4 +1,6 @@
-
+<?php
+ require 'connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,13 +106,38 @@
 <section class="bg-light py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <h2>News</h2>
-                <p>If you have any questions or inquiries, feel free to get in touch with us.</p>
-                <a href="contact.php" class="btn btn-primary">Contact Us</a>
-            </div>
-            <div class="col-lg-4">
-                <img src="img/about/6.png" alt="About Us" class="img-fluid rounded">
+            <div class="col-lg-12">
+                <h2 class="center-text">News</h2>
+                <?php
+                $sql = "SELECT id, title, content, image FROM news ORDER BY id DESC LIMIT 3";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="col-md-12">
+                                <div class="card bg-success border-success border-4">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <img src="img/news/' . $row['image'] . '" class="card-img-top" alt="' . $row['title'] . '">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-title text-light border-bottom">' . $row['title'] . '</h5>
+                                        <p class="card-text text-light border-bottom">' . $row['content'] . '</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>';
+                      }
+            
+                } else {
+                    echo '<p>No news found.</p>';
+                }
+
+                $conn->close();
+                ?>
             </div>
         </div>
     </div>
