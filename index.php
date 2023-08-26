@@ -11,6 +11,7 @@
     <title>Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5GYXBXFcBakmqjN-nLrDhARSEr1J6Bc"></script>
+    <link rel="stylesheet" href="style.css">
     
 </head>
 
@@ -28,19 +29,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="index.php">Home</a>
+                    <a class="nav-link nav-light" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="about.php">About Us</a>
+                    <a class="nav-link nav-light" href="about.php">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="ourteam.php">Our Team</a>
+                    <a class="nav-link nav-light" href="ourteam.php">Our Team</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="services.php">Services</a>
+                    <a class="nav-link nav-light" href="services.php">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="contact.php">Contact Us</a>
+                    <a class="nav-link nav-light" href="contact.php">Contact Us</a>
                 </li>
             </ul>
             <!-- Search input on the right (responsive) -->
@@ -54,7 +55,7 @@
 
 <!-- carousel -->
 <div class="mt-5">
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExample" class="carousel slide mtt" data-bs-ride="carousel">
         <div class="carousel-inner">
             
                 <?php
@@ -117,9 +118,25 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <h2 class="center-text">About Us</h2>
-                <p>PT.Gadai Syariah Berkat Bersama merupakan perusahaan yang bergerak di bidang Keuangan dengan Jasa gadai yang menerima Barang-barang Elektronik yang bernilai jual dan Kendaraan bermotor sebagai fokus produknya . Mengingat banyak perusahaan besar sejenis hanya berfokuskepada penerimaan Perhiasan /Emas, belum lagi banyak perusahaan yang melakukan praktik ketidak adilan melalui praktik riba (usury) dan ketidak pastian (gharar), menjawab keresahan itu maka PT.Gadai Syariah Berkat Bersama hadir untuk membantu Masyarakat untuk mendapatkan Pinjaman, yang Cepat, Aman dan Amanah . Tugas pokok dari PT.Gadai Syariah Berkat Bersama adalah memberikan pinjaman kepadamasyarakat yang membutuhkan.Pemberian pinjaman ini tidak terbatas untuk kalangan atau kelompok masyarakat tertentu, namun di Indonesia pemanfaat lembaga keuangan ini masih didominasi oleh kalangan yang mempunyai Perhiasan / Emas dan masih sedikit menjangkau kalangan yang hanya mempunyai Barang Elektronik dan Kendaraan dengan Syarat-syarat yang memudahkan . Dalam upaya mengubah persepsi masyarakat, salah satu cara yang digunakan PT.Gadai Syariah Berkat Bersama adalah dengan menciptakan motto Fokus Kepada Solusi Bukan Kepada Masalah .</p>
-                <a href="about.php" class="btn btn-primary">Learn More</a>
+                <h2 data-search="About" class="center-text">About Us</h2>
+                <p class="border-top">PT.Gadai Syariah Berkat Bersama merupakan perusahaan
+                     yang bergerak di bidang Keuangan dengan Jasa gadai yang menerima 
+                     Barang-barang Elektronik yang bernilai jual dan Kendaraan bermotor 
+                     sebagai fokus produknya . Mengingat banyak perusahaan besar sejenis
+                    hanya berfokuskepada penerimaan Perhiasan /Emas, belum lagi banyak 
+                    perusahaan yang melakukan praktik ketidak adilan melalui praktik riba 
+                    (usury) dan ketidak pastian (gharar), menjawab keresahan itu maka 
+                    PT.Gadai Syariah Berkat Bersama hadir untuk membantu Masyarakat untuk 
+                    mendapatkan Pinjaman, yang Cepat, Aman dan Amanah . Tugas pokok dari 
+                    PT.Gadai Syariah Berkat Bersama adalah memberikan pinjaman kepadamasyarakat 
+                    yang membutuhkan.Pemberian pinjaman ini tidak terbatas untuk kalangan atau 
+                    kelompok masyarakat tertentu, namun di Indonesia pemanfaat lembaga keuangan 
+                    ini masih didominasi oleh kalangan yang mempunyai Perhiasan / Emas dan masih 
+                    sedikit menjangkau kalangan yang hanya mempunyai Barang Elektronik dan Kendaraan 
+                    dengan Syarat-syarat yang memudahkan . Dalam upaya mengubah persepsi masyarakat, 
+                    salah satu cara yang digunakan PT.Gadai Syariah Berkat Bersama adalah dengan 
+                    menciptakan motto Fokus Kepada Solusi Bukan Kepada Masalah .</p>
+                <a href="about.php" class="btn btn-primary">Read More</a>
             </div>
             <div class="col-lg-4">
                 <img src="img/about/6.png" alt="About Us" class="img-fluid rounded">
@@ -140,17 +157,24 @@
 
                 if ($result->num_rows > 0) {
                     echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<div class="col">';
-                        echo '<div class="card">';
-                        echo '<img src="img/news/' . $row["image"] . '" class="card-img-top" alt="' . $row["title"] . '">';
-                        echo '<div class="card-body">';
-                        echo '<h5 class="card-title">' . $row["title"] . '</h5>';
-                        echo '<p class="card-text">' . $row["content"] . '</p>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="col-md-12">
+                                <div class="card bg-success border-success border-4">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <img src="img/news/' . $row['image'] . '" class="card-img-top" alt="' . $row['title'] . '">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-title text-light border-bottom">' . $row['title'] . '</h5>
+                                        <p class="card-text text-light border-bottom">' . $row['content'] . '</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>';
+                      }
+            
                 } else {
                     echo '<p>No news found.</p>';
                 }
@@ -161,13 +185,14 @@
         </div>
     </div>
 </section>
-<?php include 'branchmaps.php'; ?>
+<?php include 'include/branchmaps.php'; ?>
 
 <!-- Footer (same as index.php) -->
-<?php include 'footer.php'; ?>
+<?php include 'include/footer.php'; ?>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5GYXBXFcBakmqjN-nLrDhARSEr1J6Bc&callback=initMap"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,55 @@
+  /* Gaya teks default */
+  .center-text {
+    text-align: left; /* Default alignment */
+  }
+
+  .center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Media query untuk jendela berlebar lebih kecil dari 600px */
+  @media (max-width: 600px) {
+    .center-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .green-background {
+    background-color: #006400; /* Kode warna hijau tua */
+    color: #fff; /* Warna teks putih agar kontras */
+    padding: 20px; /* Ruang padding agar konten tidak terlalu dekat dengan tepi */
+  }
+
+  @media (max-width: 767.98px) {
+    .mtt {
+      margin-top: 7px; /* Ubah sesuai kebutuhan Anda */
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .mttd {
+      margin-top:100px; /* Ubah sesuai kebutuhan Anda */
+    }
+  }
+
+  
+Untuk membuat latar belakang (background) dari navbar transparan saat menggulir (scroll) pada Bootstrap 5.3, Anda dapat menggunakan CSS dan juga memanfaatkan kelas yang disediakan oleh Bootstrap. Berikut adalah contoh cara Anda bisa melakukannya:
+
+styles.css - File CSS untuk Latar Belakang Transparan pada Navbar saat Scroll:
+css
+Copy code
+/* CSS umum di sini */
+
+/* Transparan navbar saat di-scroll */
+.navbar-scroll {
+  background-color: transparent !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-scroll.scrolled {
+  background-color: rgba(0, 0, 0, 0.7) !important; /* Ganti dengan warna latar belakang transparan yang Anda inginkan */
+}

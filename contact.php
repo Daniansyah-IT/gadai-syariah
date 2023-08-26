@@ -6,17 +6,20 @@
     <title>Contact Us - Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Navbar (same as index.php) -->
-<?php include 'navbar.php'; ?>
-
+<?php include 'include/navbar.php'; ?>
+<section class="bg-light py-5">
+    <img src="img/about/about.png" class="w-100 mtt" alt="">
+</section>
 <!-- Contact Section -->
-<section class="py-5 mt-3">
+<section class="bg-light">
     <div class="container">
-        <h2>Contact Us</h2>
         <div class="row">
+        <h1 class="">Contact Us</h1>
             <div class="col-md-6">
                 <p>
 Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami. Kami akan dengan senang hati membantu Anda</p>
@@ -57,7 +60,7 @@ Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami. Kami akan den
 
 <!-- Footer (same as index.php) -->
 
-<?php include 'footer.php'; ?>
+<?php include 'include/footer.php'; ?>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

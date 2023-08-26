@@ -63,3 +63,11 @@ function initMap() {
     }
     
     window.initMap = initMap;
+
+
+    const places = [
+        { lat: -0.5104358038137312, lng: 117.0234565104356, name: 'Gadai Syariah KC.Loa Kulu', image: 'image1.jpg' },
+        { lat: -0.4116327658012494, lng: 116.9795589249593, name: 'Gadai Syariah Kc. Kartini',image: 'image1.jpg' },
+        { lat: -0.3824510332778752, lng: 116.98608205666464, name: 'Gadai Syariah Kc. Mangkurawang',image: 'image1.jpg' },
+        // Tambahkan lokasi lain sesuai kebutuhan
+    ];

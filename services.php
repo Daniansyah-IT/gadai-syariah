@@ -5,41 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
 </head>
+
 <body>
 
 <!-- Navbar (same as index.php) -->
-<?php include 'navbar.php'; ?>
-
+<?php include 'include/navbar.php'; ?>
+<section class="bg-light py-5">
+    <img src="img/about/about.png" class="w-100 mtt" alt="">
+</section>
 <!-- Services Section -->
-<section class="py-5">
+<section class="bg-light">
     <div class="container">
-        <h2>Our Services</h2>
         <div class="row">
-            <div class="col-md-4 mb-4">
+            
+        <h1 class="">Service</h1>
+            <div class="col-md-6 mb-4">
                 <div class="card">
-                    <img src="images/service-1.jpg" alt="Service" class="card-img-top">
+                    <img src="img/service/el.jpg" alt="Service" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Web Design</h5>
+                        <h5 class="card-title">Elektonik</h5>
                         <p class="card-text">Crafting stunning and responsive websites.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-6 mb-4">
                 <div class="card">
-                    <img src="images/service-2.jpg" alt="Service" class="card-img-top">
+                    <img src="img/service/el1.png" alt="Service" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Digital Marketing</h5>
+                        <h5 class="card-title">Kendaraan Bermotor</h5>
                         <p class="card-text">Boosting your online presence and engagement.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="images/service-3.jpg" alt="Service" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Mobile App Development</h5>
-                        <p class="card-text">Creating innovative and user-friendly mobile apps.</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +58,7 @@
 </section>
 
 <!-- Footer (same as index.php) -->
-<?php include 'footer.php'; ?>
+<?php include 'include/footer.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

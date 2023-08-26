@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Company Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Navbar (same as index.php) -->
-<?php include 'navbar.php'; ?>
-
+<?php include 'include/navbar.php'; ?>
+<section class="bg-light py-5">
+    <img src="img/about/about.png" class="w-100 mtt" alt="">
+</section>
 <!-- About Section -->
-<section class="mt-3 py-5">
+<section class="bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <h1 class="">About Us</h1>
                 <p class="">
                 <h4>A. PENDAHULUAN</h4>
-                    Kemaslahatan atau yang di kenal   
+                    <p>Kemaslahatan atau yang di kenal   
 dengan istilah maqashid syariah yang
 merupakan salah satu tujuan dari syariat
 Islam. Atas dasar itu pula Islam
@@ -170,7 +173,7 @@ Produktif sesuai kebutuhan</p>
 
 
 <!-- Footer (same as index.php) -->
-<?php include 'footer.php'; ?>
+<?php include 'include/footer.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
